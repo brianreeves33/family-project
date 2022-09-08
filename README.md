@@ -1,4 +1,5 @@
 # Reeves Family Chores
+#### GitHub link: https://github.com/brianreeves33/family-project.git
 #### Video Demo:
 #### Descripton:
 This is a simple React application that users can log into and keep track of chores do to around the house. When the app first starts it asks users to login with a username and password. Once you login (with one of the users provided in DB.js) you are brought to the user's profile. If the user has any chores for them to do, they will pop up on the profile page. Otherwise, the user music go to the Chores To-Do tab and add chores for them to do. If the user is an Admin user, then they have access to the Admin portal where they can check on chores that have been marked as "completed" and reset them back to  "not completed" once the chore needs to be done again.
