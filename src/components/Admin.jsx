@@ -4,7 +4,6 @@ import AdminCard from './AdminCard'
 
 function Admin (props){
     const currUser = props.isLoggedIn
-    console.log(currUser)
     let navigate = useNavigate()
     const choresDB = props.choreList
     const finishedChores = choresDB.filter((chore)=>{

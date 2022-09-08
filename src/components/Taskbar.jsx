@@ -19,7 +19,7 @@ function Taskbar(){
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="navItems me-auto">
-                    <Nav.Link className="navLink" href="./">Home</Nav.Link>
+                    <Nav.Link className="navLink" href="./">Login</Nav.Link>
                     <Nav.Link className="navLink" href="./profile">Profile</Nav.Link>
                     <Nav.Link className="navLink" href="./chores">Chores To-Do</Nav.Link>
                 </Nav>
