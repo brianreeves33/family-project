@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+# Reeves Family Chores
+#### Video Demo:
+#### Descripton:
+This is a simple React application that users can log into and keep track of chores do to around the house. When the app first starts it asks users to login with a username and password. Once you login (with one of the users provided in DB.js) you are brought to the user's profile. If the user has any chores for them to do, they will pop up on the profile page. Otherwise, the user music go to the Chores To-Do tab and add chores for them to do. If the user is an Admin user, then they have access to the Admin portal where they can check on chores that have been marked as "completed" and reset them back to  "not completed" once the chore needs to be done again.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DB.js is a file that acts as a database for the application. This file exports the variables users and chores. Both of the variables are arrays that contain objects. Users contains an object for each individual user that holds a user's name, password, role (Parent or Child), whether or not they are Admin, and their id. Chores contains an object for each chore that holds a chore's id, the user id associated with that chore (if assigned to a specific user), a name, image, description, and where or not the chore is completed. 
 
-## Available Scripts
+Index.js is where we creat a root using ReactDOM. This root is created by going into the index.html file in the public folder and grabbing the div with an id of "root". Then index.js reners App.js inside that div.
 
-In the project directory, you can run:
+App.jsx is where each of our components are rendered. The first thing that happens in the App.js function is the declaration of our state variables, and setting the state for each of those variables. Then we use 2 useEffects. The first checks if there is a current user saved in our local storage. If there is, then we set our IsLoggedIn stateto that specific user. The second does pretty much the same, excpet with the choresList. The next thing is our handleLogout helper function. This function runs when you click any of the "Log out" buttons throughout the app. All this function does is set the user, password, and isLoggedIn state variables back to their intial state and removes the user from local storage. Next is where the App component establishes routes using BrowserRouter from "react-router-dom" and renders the other components in the application. You will see the Taskbar component is located outsie where we actually establish the routes for Login, Profile, Chores, and Admin. This is because we want the Taskbar to always be visible, while the other components should only be visible when visiting the specific route associated with them.
 
-### `npm start`
+Login.jsx is the component that renders our login page. The first thing in our Login component are the handleUser, handlePassword, and handleSubmit functions that work with our login form. handleUser grabs the value from the username input anytime it changes, and sets our user state to that value. handlePassword does the same, but for the passowrd input and password state. handleClick runs anytime the Login button is clicked. First, it filters through our users database and returns the user whose username is equal to the one put in the username input, and whose password is equal to the one put in the password input. If the username or password does not match any in the users database, then an error message is returned. If a user is matched, then is sets the isLoggedIn state to that user, stores that user in localStorage, and navigates to that user's profile page. Below is handleClick function is where our actual html for Login.jsx is rendered.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Profile.jsx is where a logged in user can see the chores that are assigned to them. If the user is an admin, they can also access the Admin portal from here. First, we filter through our chores database, and return the chores with a completed status of "In Progress" and with a user_id equal to our current users ID.  

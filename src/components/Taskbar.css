@@ -1,0 +1,26 @@
+.navbar{
+    border: 1px solid black;
+    
+}
+.container{
+    margin: auto;
+    width: 50%;
+}
+.heading{
+    font-size: xx-large;
+   padding-left: 23%;
+}
+.navItems{
+    text-align:justify;
+    padding-top: 5%;
+}
+.navLink{
+    content: "";
+    display: inline-block;
+    width: 100%;
+    color: #fff !important;
+    padding: 0 50px !important;
+  }
+
+
+
